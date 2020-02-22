@@ -1,0 +1,26 @@
+{
+  "name": "fullstack-api",
+  "version": "1.0.0",
+  "description": "Backend en Mongo y Express",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bryan2811/Proyecto-Full-Stack.git"
+  },
+  "author": "Bryan Silva",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bryan2811/Proyecto-Full-Stack/issues"
+  },
+  "homepage": "https://github.com/bryan2811/Proyecto-Full-Stack#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.9.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
