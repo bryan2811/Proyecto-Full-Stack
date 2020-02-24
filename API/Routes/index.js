@@ -19,9 +19,14 @@ module.exports = function () {
         pacienteController.obtenerPaciente
     )
 
-    // Actualizar un registro con un ID especifico
+    // Actualizar un paciente con un ID especifico
     router.put('/pacientes/:id',
         pacienteController.actualizarPaciente
+    )
+
+    // Elimina un paciente por su ID
+    router.delete('/pacientes/:id',
+        pacienteController.eliminarPaciente
     )
 
     return router;
