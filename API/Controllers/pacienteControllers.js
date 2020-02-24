@@ -15,3 +15,15 @@ exports.nuevoCliente = async (req, res, next) => {
     }
    
 }
+
+// Obtiene todos los pacientes
+exports.obtenerPacientes = async (req, res, next) => {
+    try {
+        // Consulta a la bd, .find({}) << metodo de mongoose para traer todos los registros
+       const pacientes = await Paciente.find({});
+       res.json(pacientes);
+    } catch (error) {
+        console.log(error);
+        next();
+    }
+}
