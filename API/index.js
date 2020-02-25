@@ -20,7 +20,8 @@ const corsOptions = {
     }
 }
 
-app.use( cors(corsOptions) );
+// app.use( cors(corsOptions) );
+app.use(cors())
 
 // Conectar a mongoDB
 mongoose.Promise = global.Promise;

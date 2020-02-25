@@ -17,7 +17,8 @@ function App() {
     const consultarAPI = () => {
         clienteAxios.get('/pacientes')
           .then(respuesta => {
-            console.log(respuesta);
+            // Colocar en el state el resultado
+            guardarCitas(respuesta.data);
           })
           .catch(error => {
             console.log(error);
@@ -29,7 +30,7 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route exact path="/" component={Pacientes} />
+        <Route exact path="/" component={() => <Pacientes citas={citas} />} />
         <Route exact path="/nueva" component={NuevaCita} />
         <Route exact path="/cita/:id" component={Cita} />
       </Switch>
