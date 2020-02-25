@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
+import clienteAxios from './config/axios';
 
 // Componentes
 import Pacientes from './components/Pacientes';
@@ -8,8 +10,23 @@ import Cita from './components/Cita';
 
 function App() {
 
-  return (
+  // State de la app
+  const [citas, guardarCitas] = useState([]);
 
+  useEffect( () => {
+    const consultarAPI = () => {
+        clienteAxios.get('/pacientes')
+          .then(respuesta => {
+            console.log(respuesta);
+          })
+          .catch(error => {
+            console.log(error);
+          })
+    }
+    consultarAPI();
+  }, []);
+
+  return (
     <Router>
       <Switch>
         <Route exact path="/" component={Pacientes} />
