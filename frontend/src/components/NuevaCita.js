@@ -1,7 +1,29 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 function NuevaCita() {
+
+    // Generar state como objeto
+    const [cita, guardarCita] = useState({
+        nombre: '',
+        propietario: '',
+        fecha: '',
+        hora: '',
+        telefono: '',
+        sintomas: ''
+    });
+
+    // Funcion que lee los datos del formulario
+    const actualizarState = e => {
+        guardarCita({
+            ...cita,
+            [e.target.name] : e.target.value
+        })
+    }
+
+    // Enviar una peticion a la API
+    
+
     return (
         <Fragment>
 
@@ -26,7 +48,8 @@ function NuevaCita() {
                             className="form-control form-control-lg" 
                             id="nombre" 
                             name="nombre" 
-                            placeholder="Nombre Mascota" 
+                            placeholder="Nombre Mascota"
+                            onChange={actualizarState}
                         />
                     </div>
 
@@ -37,7 +60,8 @@ function NuevaCita() {
                             className="form-control form-control-lg" 
                             id="propietario" 
                             name="propietario" 
-                            placeholder="Nombre Propietario" 
+                            placeholder="Nombre Propietario"
+                            onChange={actualizarState}
                         />
                     </div>
 
@@ -48,7 +72,8 @@ function NuevaCita() {
                             className="form-control form-control-lg" 
                             id="telefono" 
                             name="telefono" 
-                            placeholder="Teléfono" 
+                            placeholder="Teléfono"
+                            onChange={actualizarState}
                         />
                     </div>
 
@@ -58,7 +83,8 @@ function NuevaCita() {
                             type="date" 
                             className="form-control form-control-lg" 
                             id="fecha" 
-                            name="fecha"  
+                            name="fecha"
+                            onChange={actualizarState}
                         />
                     </div>
 
@@ -68,7 +94,8 @@ function NuevaCita() {
                             type="time" 
                             className="form-control form-control-lg" 
                             id="hora" 
-                            name="hora"  
+                            name="hora"
+                            onChange={actualizarState}
                         />
                     </div>
 
@@ -78,6 +105,7 @@ function NuevaCita() {
                             className="form-control" 
                             name="sintomas" 
                             rows="6"
+                            onChange={actualizarState}
                         ></textarea>
                     </div>
 
