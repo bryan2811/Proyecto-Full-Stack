@@ -1,7 +1,9 @@
 import React, { Fragment, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
-function NuevaCita() {
+import clienteAxios from '../config/axios';
+
+const NuevaCita = (props) => {
 
     // Generar state como objeto
     const [cita, guardarCita] = useState({
@@ -22,7 +24,21 @@ function NuevaCita() {
     }
 
     // Enviar una peticion a la API
-    
+    const crearNuevaCita = e => {
+        e.preventDefault();
+
+        // Enviar peticion por axios
+        clienteAxios.post('/pacientes', cita)
+            .then(respuesta => {
+                props.guardarConsultar(true);
+
+                // Redireccionar
+                props.history.push('/')
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
 
     return (
         <Fragment>
@@ -40,7 +56,7 @@ function NuevaCita() {
                 </div>
             </div>
             <div className="col-md-8 mx-auto">
-                <form className="bg-white p-5 bordered">
+                <form onSubmit={crearNuevaCita} className="bg-white p-5 bordered">
                     <div className="form-group">
                         <label htmlFor="nombre">Nombre Mascota</label>
                         <input 
@@ -117,4 +133,4 @@ function NuevaCita() {
     )
 }
 
-export default NuevaCita;
+export default withRouter(NuevaCita);
