@@ -1,17 +1,48 @@
 {
-  "name": "fullstack-js-desktop-bs",
-  "version": "1.0.0",
-  "description": "Aplicacion en Electron",
-  "main": "index.js",
-  "dependencies": {},
-  "devDependencies": {
+  "name": "frontend",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.4.1",
+    "@testing-library/user-event": "^7.2.1",
+    "axios": "^0.19.2",
+    "concurrently": "^5.1.0",
+    "cross-env": "^7.0.0",
     "electron": "^8.0.2",
-    "electron-builder": "^22.3.2"
+    "electron-builder": "^22.3.2",
+    "electron-is-dev": "^1.1.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.4.0",
+    "sweetalert2": "^9.8.2",
+    "typescript": "^3.8.2",
+    "wait-on": "^4.0.0"
   },
   "scripts": {
-    "start": "electron .",
-    "dist": "electron-builder -l"
+    "react-start": "react-scripts start",
+    "react-build": "react-scripts build",
+    "react-test": "react-scripts test --env=jsdom",
+    "react-eject": "react-scripts eject",
+    "electron-build": "electron-builder",
+    "release": "yarn react-build && electron-builder --publish=always",
+    "build": "yarn react-build && yarn electron-build",
+    "start": "concurrently \"cross-env BROWSER=none npm run react-start\"  \"wait-on http://localhost:3000 && electron .\""
   },
-  "author": "Bryan Silva",
-  "license": "ISC"
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
 }
