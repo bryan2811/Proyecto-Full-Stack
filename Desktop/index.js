@@ -5,12 +5,14 @@ let appWindow;
 
 function windowApp() {
     appWindow = new BrowserWindow({
+        // Ajustes Visuales
         minWidth: 800,
         minHeight: 600,
         width: 1200,
         height: 800,
         center: true,
-        show: false
+        show: false,
+        icon: 'icon.png'
     });
     
     // Cuando la app es cerrada, cerrar la ventana.

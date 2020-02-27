@@ -5,10 +5,12 @@
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
-    "electron": "^8.0.2"
+    "electron": "^8.0.2",
+    "electron-builder": "^22.3.2"
   },
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "dist": "electron-builder -l"
   },
   "author": "Bryan Silva",
   "license": "ISC"
